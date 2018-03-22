@@ -1,0 +1,120 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../../bower_components/vaadin-grid/vaadin-grid-sorter.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="ingredient-main-element">
+  <div class="container">
+    <template>
+      <main>
+        <div class="buttons">
+          <paper-button class="controleer">controleer voorraad</paper-button>
+          <paper-button class="bestel">bestel ingrediënten</paper-button>
+        </div>
+
+        <vaadin-grid items="[[ingredienten]]">
+
+          <vaadin-grid-column>
+            <template class="header">
+              <vaadin-grid-sorter path="naam">Naam<vaadin-grid-sorter>
+            </template>
+            <template>[[item.naam]]</template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <vaadin-grid-sorter path="houdbaarheiddatum">Houdbaarheiddatum<vaadin-grid-sorter>
+            </template>
+            <template>[[item.houdbaarheiddatum]]</template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <vaadin-grid-sorter path="hoeveelheid">Hoeveelheid<vaadin-grid-sorter>
+            </template>
+            <template class="hoeveelheid">[[item.hoeveelheid]]<paper-button>+1</paper-button><paper-button>-1</paper-button></template>
+          </vaadin-grid-column>
+      </main>
+    </div>
+    <style>
+    .buttons{
+      margin-left: 18%;
+    }
+
+    .container{
+      width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      font-family: Arial;
+      font-size: 15px;
+    }
+
+    vaadin-grid-cell-content{
+      display: inline-block;
+    }
+
+    @keyframes example {
+      0%{border-radius: 0px;}
+      25%{border-radius: 10px;}
+      50%{border-radius: 20px;}
+      100%{border-radius: 30px;}
+    }
+
+    vaadin-grid paper-button {
+      float: right;
+      width: 50px;
+      text-align: center;
+      border-style: solid;
+      border-color: grey;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate-reverse;
+    }
+
+    vaadin-grid{
+      height: 30%;
+      margin-top: 2%;
+      width: 70%  x;
+    }
+
+    paper-button{
+      width: 300px;
+      text-align: center;
+      margin-top:2%;
+      padding: 1%;
+      border-style: solid;
+      border-color: grey;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate-reverse;
+    }
+    </style>
+    </template>
+  <script>
+     class IngredientMainElement extends Polymer.Element {
+        static get is() { return 'ingredient-main-element'; }
+        static get properties(){
+         return{
+             ingredienten:{
+               type: Array,
+               value: [
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "1"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "1"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "3"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "4"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "1"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "1"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "2"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "3"},
+                 {naam: "sushi", houdbaarheiddatum: "13-04-2018", hoeveelheid: "3"}
+               ]
+             }
+           }
+         }
+       }
+       window.customElements.define(IngredientMainElement.is, IngredientMainElement);
+  </script>
+</dom-module>

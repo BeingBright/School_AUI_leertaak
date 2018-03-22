@@ -1,0 +1,104 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="gerecht-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 20em;
+        height: 16em;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .objHeader {
+        background-color: rgb(1, 157, 204);
+        height: 20%;
+        margin: auto;
+        overflow: hidden;
+      }
+
+      .objBody {
+        background-color: rgb(0, 111, 145);
+        height: 60%;
+        overflow-y: scroll;
+        text-align: left;
+      }
+
+      .objFooter {
+        background-color: rgb(0, 111, 145);
+        height: 20%;
+      }
+
+      paper-button {
+        background-color: rgb(1, 157, 204);
+        width: 80%;
+        height: 80%;
+        margin: auto;
+      }
+
+      paper-button:hover {
+        background-color: rgb(1, 157, 204);
+      }
+    </style>
+    <div class="objHeader">
+      <h3>[[data.currentStatus.value]]</h3>
+    </div>
+    <div class="objBody">
+      <ul>
+        <li>Ingrediënt 1</li>
+        <li>Ingrediënt 2</li>
+        <li>Ingrediënt 3</li>
+        <li>Ingrediënt 4</li>
+        <li>Ingrediënt 5</li>
+        <li>Ingrediënt 6</li>
+        <li>Ingrediënt 1</li>
+        <li>Ingrediënt 2</li>
+        <li>Ingrediënt 3</li>
+        <li>Ingrediënt 4</li>
+        <li>Ingrediënt 5</li>
+        <li>Ingrediënt 6</li>
+        <li>Ingrediënt 1</li>
+        <li>Ingrediënt 2</li>
+        <li>Ingrediënt 3</li>
+        <li>Ingrediënt 4</li>
+        <li>Ingrediënt 5</li>
+        <li>Ingrediënt 6</li>
+      </ul>
+    </div>
+    <div class="objFooter">
+      <paper-button>[[data.nextStatus.value]]</paper-button>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class GerechtElement extends Polymer.Element {
+      static get is() { return 'gerecht-element'; }
+      static get properties() {
+        return {
+          data: {
+            type: JSON,
+            value: {
+              currentStatus: {
+                type: String,
+                value: "Huidige Status"
+              },
+              nextStatus: {
+                type: String,
+                value: "Volgende Status"
+              }
+            }
+          }
+        };
+      }
+
+    }
+
+    window.customElements.define(GerechtElement.is, GerechtElement);
+  </script>
+</dom-module>

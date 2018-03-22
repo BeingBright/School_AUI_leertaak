@@ -1,0 +1,4 @@
+flask
+flask_sqlalchemy
+flask_rest_jsonapi
+flask_jsontools

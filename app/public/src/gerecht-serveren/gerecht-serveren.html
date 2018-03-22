@@ -1,0 +1,120 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="/bower_components/vaadin-grid/vaadin-grid-sorter.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<dom-module id="gerecht-serveren">
+    <template>
+        <style>
+            html, body, table{
+                padding: 0;
+                margin:  0;
+            }
+
+            body{
+                width: 80%;
+                margin: auto;
+            }
+
+            paper-button:hover {
+                background: black;
+                color: white;
+            }
+
+            paper-button{
+                height: 50px;
+                font-size: 40px;
+                color: black;
+                background-color: white;
+                border: 3px solid black;
+                padding: 10px;
+                margin-top: 20px;
+                margin-right: 50px;
+            }
+
+            .container {
+                height: 600px;
+                overflow: auto;
+                border: 5px solid black;
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 100px;
+            }
+
+            p {
+                display: inline;
+                font-size: 40px;
+            }
+            vaadin-grid {
+                margin-top: 100px;
+                height: 500px;
+            }
+
+            img{
+                width: 200px;
+                height: 100px;
+                border: 2px lightgrey solid;
+                margin: 0 0 0 50px;
+            }
+
+        </style>
+        <vaadin-grid items="[[serveerlijst]]">
+
+            <vaadin-grid-column>
+                <template class="header">
+                    <vaadin-grid-sorter path="afbeelding">
+                        Afbeelding
+                    </vaadin-grid-sorter>
+                </template>
+                <template><img src="[[item.image]]"/></template>
+            </vaadin-grid-column>
+
+            <vaadin-grid-column>
+                <template class="header">
+                    <vaadin-grid-sorter path="naam">
+                        Naam
+                    </vaadin-grid-sorter>
+                </template>
+                <template>[[item.naam]]</template>
+            </vaadin-grid-column>
+
+
+            <vaadin-grid-column>
+                <template class="header">
+                    <vaadin-grid-sorter path="serveer">
+                        Geserveerd
+                        <vaadin-grid-sorter>
+                </template>
+                <template>
+                    <paper-button raised on-click="" style="float: right;">Geserveerd</paper-button>
+                </template>
+            </vaadin-grid-column>
+        </vaadin-grid>
+    </template>
+    <script>
+        class GerechtServeren extends Polymer.Element {
+            static get is() {
+                return 'gerecht-serveren';
+            }
+
+            static get properties() {
+                return {
+                    serveerlijst: {
+                        type: Array,
+                        value: [
+                            {naam: "Tamago", image: "http://www.kikkoman.nl/uploads/tx_nlkikkomanrecipes/sushi_tamago_ohneWeb_13.jpg"},
+                            {naam: "Unagi", image: "http://i2.wp.com/www.foodrepublic.com/wp-content/uploads/2013/01/whatchamacallit_unagi.jpg?fit=700%2C525"},
+                            {naam: "Wakame Gunkan", image: "https://menuavenue.ua/upload/iblock/9d0/9d0d8942f0eed306016a53ec48e2e671.jpg"},
+                            {naam: "Cornflakes", image: "https://drogespieren.nl/wp-content/uploads/is-cornflakes-gezond.jpg"},
+                            {naam: "Wasabi", image: "https://japancentre-images.freetls.fastly.net/recipes/pics/589/main/photo_wasabi_paste.jpg?1469573186i"}
+
+                        ]
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(GerechtServeren.is, GerechtServeren);
+    </script>
+</dom-module>

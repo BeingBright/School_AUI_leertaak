@@ -1,0 +1,73 @@
+<link rel="import" href="../gerecht-element/gerecht-element.html">
+
+<dom-module id="gerecht-wachtrij">
+    <template>
+        <style>
+            .block {
+                text-align: center;
+                display: inline-block;
+                width: 33%;
+
+            }
+
+            .block .gerecht {
+                height: 50em;
+                overflow-y: scroll;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+
+        <div class="block">
+            <div>Klaar</div>
+            <div class="gerecht">
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+            </div>
+        </div>
+        <div class="block">
+            <div>In Behandeling</div>
+            <div class="gerecht">
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+            </div>
+        </div>
+        <div class="block">
+            <div>Besteld</div>
+            <div class="gerecht">
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+                <gerecht-element></gerecht-element>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class GerechtWachtrij extends Polymer.Element {
+            static get is() {
+                return 'gerecht-wachtrij';
+            }
+        }
+
+        window.customElements.define(GerechtWachtrij.is, GerechtWachtrij);
+    </script>
+</dom-module>

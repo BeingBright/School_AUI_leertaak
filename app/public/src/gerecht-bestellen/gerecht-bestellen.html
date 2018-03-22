@@ -1,0 +1,179 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="/bower_components/vaadin-grid/vaadin-grid-sorter.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<dom-module id="gerecht-bestellen">
+    <template>
+        <style>
+            html, body, table {
+                padding: 0;
+                margin: 0;
+            }
+
+            .container {
+                margin-top: 4.5%;
+            }
+
+            paper-button {
+                height: 5px;
+                font-size: 15px;
+                border-style: solid;
+                border-color: grey;
+                animation-name: example;
+                animation-duration: 10s;
+                animation-delay: 0s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+
+            .vaadinButton{
+              width: 100px;
+            }
+
+            vaadin-grid{
+              max-width: 700px;
+            }
+
+            @keyframes example {
+                from {
+                    border-radius: 0px;
+                }
+                to {
+                    border-radius: 50px;
+                }
+            }
+
+            #logo {
+                width: 90%;
+                max-height: 150px;
+                overflow-y: hidden;
+            }
+
+            .tabel td {
+                width: 550px;
+                height: 125px;
+                border: 2px lightgrey solid;
+            }
+
+            .tabel2 th, td {
+                border: 1px lightgrey solid;
+                width: 175px;
+                text-align: left;
+            }
+
+            .container {
+                display:flex;
+            }
+            .box-1 {
+                height: 550px;
+                flex:1;
+                margin-left: 8%
+            }
+
+            .box-2 {
+                height: 550px;
+                width: 400px;
+                margin-right: 8%
+            }
+
+            .vak2 {
+                overflow-y: scroll;
+                height: 200px;
+                width: 350px;
+                float: left;
+                border: 1px lightgrey solid;
+            }
+
+            .vaadinImg{
+              width: 200px;
+              height: 100px;
+              border: 2px lightgrey solid;
+            }
+
+            .buttons{
+              margin-top: 9%;
+            }
+
+        </style>
+            <div class="container">
+                <div class="box-1">
+                    <vaadin-grid items="[[bestellijst]]">
+                        <vaadin-grid-column>
+                            <template class="header">
+                                <vaadin-grid-sorter path="afbeelding">
+                                    Afbeelding
+                                </vaadin-grid-sorter>
+                            </template>
+                            <template><img class="vaadinImg" src="[[item.image]]"/></template>
+                        </vaadin-grid-column>
+
+                        <vaadin-grid-column>
+                            <template class="header">
+                                <vaadin-grid-sorter path="naam">
+                                    Naam
+                                </vaadin-grid-sorter>
+                            </template>
+                            <template>[[item.naam]]</template>
+                        </vaadin-grid-column>
+
+                        <vaadin-grid-column>
+                            <template class="header">
+                                <vaadin-grid-sorter path="bestel">
+                                    bestellen
+                                <vaadin-grid-sorter>
+                            </template>
+                            <template>
+                                <paper-button class="vaadinButton" raised on-click="" style="float: right;">Bestellen</paper-button>
+                            </template>
+                        </vaadin-grid-column>
+                    </vaadin-grid>
+                    <div class="buttons">
+                        <paper-button class="controleer">controleer voorraad</paper-button>
+                        <paper-button class="bestel">bestel ingrediënten</paper-button>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <img id="logo" src="https://canvas.hu.nl/courses/183/files/7725/preview">
+                    <h2>Bestelde gerechten:</h2>
+
+                    <div class="vak2">
+                        <table class="tabel2">
+                            <tr>
+                                <th>Naam:</th>
+                                <th>Status:</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <h2><u>Totaalprijs:</u></h2>
+                    <h2><u>$0.00</u></h2>
+
+                </div>
+            </div>
+    </template>
+    <script>
+        class GerechtBestellen extends Polymer.Element {
+            static get is() {
+                return 'gerecht-bestellen';
+            }
+
+            static get properties() {
+                return {
+                    bestellijst: {
+                        type: Array,
+                        value: [
+                          {naam: "Tamago", image: "http://www.kikkoman.nl/uploads/tx_nlkikkomanrecipes/sushi_tamago_ohneWeb_13.jpg"},
+                          {naam: "Unagi", image: "http://i2.wp.com/www.foodrepublic.com/wp-content/uploads/2013/01/whatchamacallit_unagi.jpg?fit=700%2C525"},
+                          {naam: "Wakame Gunkan", image: "https://menuavenue.ua/upload/iblock/9d0/9d0d8942f0eed306016a53ec48e2e671.jpg"},
+                          {naam: "Cornflakes", image: "https://drogespieren.nl/wp-content/uploads/is-cornflakes-gezond.jpg"},
+                          {naam: "Wasabi", image: "https://japancentre-images.freetls.fastly.net/recipes/pics/589/main/photo_wasabi_paste.jpg?1469573186i"}
+                        ]
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(GerechtBestellen.is, GerechtBestellen);
+    </script>
+</dom-module>
